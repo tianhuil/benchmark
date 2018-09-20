@@ -8,7 +8,7 @@ def make_sklearn_dataset(name, loader):
 	data = loader()
 	return Dataset(name, data.data, data.target)
 
-datasets = [
+_datasets = [
     make_sklearn_dataset("boston", datasets.load_boston),
     make_sklearn_dataset("iris", datasets.load_iris),
     make_sklearn_dataset("diabetes", datasets.load_diabetes),
@@ -19,5 +19,5 @@ datasets = [
 ]
 
 def dataset_iter():
-	for dataset in datasets:
+	for dataset in _datasets:
 		yield dataset
