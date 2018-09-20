@@ -14,7 +14,6 @@ def benchmark_estimator(Estimator, **kwargs):
 			"scores": list(scores),
 			"kwargs": kwargs,
 		}
-		print
 
 def test(capsys):
 	with capsys.disabled():

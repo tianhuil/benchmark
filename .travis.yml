@@ -3,4 +3,4 @@ install:
   - pip install -r requirements.txt
 python:
   - "2.7"
-script: pytest
+script: py.test test.py
