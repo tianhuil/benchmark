@@ -2,7 +2,7 @@ from collections import namedtuple
 
 from sklearn import datasets
 
-Dataset = namedtuple("Dataset", ["name", "data", "target", "tags"])
+Dataset = namedtuple("Dataset", ["name", "data", "target"])
 
 def make_sklearn_dataset(name, loader):
     data = loader()

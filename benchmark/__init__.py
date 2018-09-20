@@ -1,7 +1,7 @@
 from sklearn.model_selection import cross_val_score
+from sklearn.utils import shuffle
 
 from data import dataset_iter
-from cv import cv
 
 
 class Benchmark(object):
@@ -9,12 +9,9 @@ class Benchmark(object):
         self.estimator = estimator
 
     def cross_val(self, **kwargs):
-
         for dataset in dataset_iter():
-            n_splits = kwargs.pop('n_splits', 5)
-            _cv = cv(n_splits, dataset.target, self.estimator)
-            scores = cross_val_score(self.estimator, dataset.data, dataset.target, cv=_cv, **kwargs)
-            kwargs.update({'n_splits': n_splits})
+            X, y = shuffle(dataset.data, dataset.target, random_state=42)
+            scores = cross_val_score(self.estimator, X, y, **kwargs)
             print
             print "JSON_DATA_FIELD", {
                 "dataset": dataset.name,
