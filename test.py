@@ -4,4 +4,4 @@ from benchmark import Benchmark
 
 def test(capsys):
 	with capsys.disabled():
-		Benchmark(RidgeCV()).cross_val(cv=5)
+		Benchmark(RidgeCV()).cross_val(n_splits=5)
