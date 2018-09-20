@@ -2,11 +2,11 @@ from collections import namedtuple
 
 from sklearn import datasets
 
-Dataset = namedtuple("Dataset", ["name", "data", "target"])
+Dataset = namedtuple("Dataset", ["name", "data", "target", "tags"])
 
 def make_sklearn_dataset(name, loader):
-	data = loader()
-	return Dataset(name, data.data, data.target)
+    data = loader()
+    return Dataset(name, data.data, data.target)
 
 _datasets = [
     make_sklearn_dataset("boston", datasets.load_boston),
@@ -19,5 +19,5 @@ _datasets = [
 ]
 
 def dataset_iter():
-	for dataset in _datasets:
-		yield dataset
+    for dataset in _datasets:
+        yield dataset
